@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp/pages/home_page.dart';
+import 'package:todoapp/pages/todo_page.dart';
 import 'package:todoapp/themes/colors.dart';
 
 void main() {
@@ -20,7 +21,10 @@ class MainApp extends StatelessWidget {
         body: PageView(
           controller: pageController,
           physics: const NeverScrollableScrollPhysics(),
-          children: [HomePage(pageController: pageController)],
+          children: [
+            HomePage(pageController: pageController),
+            TodoPage(pageController: pageController),
+          ],
         ),
       ),
     );
