@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp/components/todo_card.dart';
+import 'package:todoapp/features/today/views/widgets/header.dart';
 
-class HomePage extends StatelessWidget {
+class TodayPage extends StatelessWidget {
   final PageController pageController;
-  const HomePage({super.key, required this.pageController});
+  const TodayPage({super.key, required this.pageController});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color(0xff278e8d),
+      color: Theme.of(context).colorScheme.surface,
       child: Stack(
         children: [
           Positioned(
@@ -38,34 +39,7 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.only(top: 57, left: 24, right: 24),
             child: Column(
               children: [
-                Row(
-                  children: [
-                    Text(
-                      "Hoje",
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.tertiary,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const Text(
-                      " Seg - Out 25",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 8,
-                    ),
-                    Icon(
-                      Icons.add,
-                      size: 32,
-                      color: Theme.of(context).colorScheme.primary,
-                    )
-                  ],
-                ),
+                const Header(),
                 const SizedBox(
                   height: 24,
                 ),

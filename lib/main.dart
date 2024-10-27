@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:todoapp/pages/home_page.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:todoapp/features/today/views/pages/today_page.dart';
 import 'package:todoapp/pages/todo_page.dart';
 import 'package:todoapp/themes/colors.dart';
 
-void main() {
+void main() async {
+  await initializeDateFormatting('pt_BR', null);
   runApp(const MainApp());
 }
 
@@ -22,7 +24,7 @@ class MainApp extends StatelessWidget {
           controller: pageController,
           physics: const NeverScrollableScrollPhysics(),
           children: [
-            HomePage(pageController: pageController),
+            TodayPage(pageController: pageController),
             TodoPage(pageController: pageController),
           ],
         ),
