@@ -1,13 +1,15 @@
+import 'package:todoapp/features/today/domain/enums/todo_status.dart';
+
 class Todo {
   final String id;
   final String title;
   final DateTime date;
-  final bool isDone;
+  final TodoStatus status;
 
   Todo({
     required this.id,
     required this.title,
     required this.date,
-    required this.isDone,
+    this.status = TodoStatus.inProgress,
   });
 }

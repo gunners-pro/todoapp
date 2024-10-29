@@ -9,6 +9,9 @@ part 'today_state.g.dart';
 List<Todo> listTodoToday(Ref ref) {
   var todoProvider = ref.watch(todosProvider);
   var today = DateTime.now().day;
-  var todayList = todoProvider.where((p) => p.date.day == today).toList();
+  var todayMinusOne = DateTime.now().subtract(const Duration(days: 1));
+  var todayList = todoProvider
+      .where((p) => p.date.day == today || p.date.day == todayMinusOne.day)
+      .toList();
   return todayList;
 }

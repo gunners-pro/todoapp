@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoapp/features/today/domain/enums/todo_status.dart';
 import 'package:todoapp/features/today/domain/model/todo.dart';
 
 class TodoCard extends StatelessWidget {
@@ -11,9 +12,17 @@ class TodoCard extends StatelessWidget {
     final borderRadius = BorderRadius.circular(16);
     final hour = todo.date.hour;
     final minute = todo.date.minute;
-    final bgColor = todo.isDone
-        ? Theme.of(context).colorScheme.tertiary
-        : Theme.of(context).colorScheme.primary;
+
+    Color bgColor() {
+      switch (todo.status) {
+        case TodoStatus.completed:
+          return Theme.of(context).colorScheme.tertiary;
+        case TodoStatus.late:
+          return Theme.of(context).colorScheme.secondary;
+        default:
+          return Theme.of(context).colorScheme.primary;
+      }
+    }
 
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
@@ -35,7 +44,7 @@ class TodoCard extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               borderRadius: borderRadius,
-              color: bgColor,
+              color: bgColor(),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
