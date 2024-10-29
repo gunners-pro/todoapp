@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todoapp/components/todo_card.dart';
+import 'package:todoapp/features/today/providers/today_state.dart';
 import 'package:todoapp/features/today/views/widgets/header.dart';
 
-class TodayPage extends StatelessWidget {
+class TodayPage extends ConsumerWidget {
   final PageController pageController;
   const TodayPage({super.key, required this.pageController});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    var todayTodos = ref.watch(listTodoTodayProvider);
+
     return Container(
       color: Theme.of(context).colorScheme.surface,
       child: Stack(
@@ -46,7 +50,7 @@ class TodayPage extends StatelessWidget {
                 Flexible(
                   child: ListView.builder(
                     padding: const EdgeInsets.only(bottom: 16, top: 8),
-                    itemCount: 10,
+                    itemCount: todayTodos.length,
                     itemBuilder: (BuildContext context, int index) {
                       return const TodoCard();
                     },

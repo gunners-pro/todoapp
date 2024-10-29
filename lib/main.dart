@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:todoapp/features/today/views/pages/today_page.dart';
 import 'package:todoapp/pages/todo_page.dart';
@@ -6,7 +7,7 @@ import 'package:todoapp/themes/colors.dart';
 
 void main() async {
   await initializeDateFormatting('pt_BR', null);
-  runApp(const MainApp());
+  runApp(const ProviderScope(child: MainApp()));
 }
 
 class MainApp extends StatelessWidget {
