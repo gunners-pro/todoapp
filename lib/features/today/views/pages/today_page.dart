@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todoapp/components/todo_card.dart';
+import 'package:todoapp/features/today/views/widgets/todo_card.dart';
 import 'package:todoapp/features/today/providers/today_state.dart';
 import 'package:todoapp/features/today/views/widgets/header.dart';
 
@@ -44,15 +44,15 @@ class TodayPage extends ConsumerWidget {
             child: Column(
               children: [
                 const Header(),
-                const SizedBox(
-                  height: 24,
-                ),
+                const SizedBox(height: 24),
                 Flexible(
                   child: ListView.builder(
                     padding: const EdgeInsets.only(bottom: 16, top: 8),
                     itemCount: todayTodos.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return const TodoCard();
+                      return TodoCard(
+                        todo: todayTodos[index],
+                      );
                     },
                   ),
                 ),
