@@ -24,6 +24,103 @@ class TodoCard extends StatelessWidget {
       }
     }
 
+    void bottomSheet() {
+      showBottomSheet(
+          context: context,
+          builder: (BuildContext context) {
+            return Container(
+              height: 100,
+              padding: const EdgeInsets.all(24),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 2,
+                  color: Colors.black,
+                ),
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(32),
+                  topRight: Radius.circular(32),
+                ),
+              ),
+              child: Row(
+                children: [
+                  Flexible(
+                    flex: 1,
+                    fit: FlexFit.tight,
+                    child: InkWell(
+                      onTap: () {},
+                      borderRadius: borderRadius,
+                      child: Ink(
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(
+                              width: 2,
+                              color: Colors.black,
+                            ),
+                            borderRadius: borderRadius,
+                            boxShadow: const [
+                              BoxShadow(
+                                offset: Offset(2, 3),
+                                color: Colors.black45,
+                              )
+                            ]),
+                        child: const Text(
+                          "Editar",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  Flexible(
+                    flex: 2,
+                    fit: FlexFit.tight,
+                    child: InkWell(
+                      onTap: () {},
+                      borderRadius: borderRadius,
+                      child: Ink(
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.tertiary,
+                            border: Border.all(
+                              width: 2,
+                              color: Colors.black,
+                            ),
+                            borderRadius: borderRadius,
+                            boxShadow: const [
+                              BoxShadow(
+                                offset: Offset(2, 3),
+                                color: Colors.black45,
+                              )
+                            ]),
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              "Completar",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(width: 8),
+                            Icon(Icons.done, size: 25, weight: 60)
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            );
+          });
+    }
+
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
@@ -38,7 +135,7 @@ class TodoCard extends StatelessWidget {
       child: Material(
         borderRadius: borderRadius,
         child: InkWell(
-          onTap: () {},
+          onTap: bottomSheet,
           borderRadius: borderRadius,
           child: Ink(
             padding: const EdgeInsets.all(16),
